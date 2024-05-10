@@ -1,14 +1,14 @@
-import { Request, Response, NextFunction } from "express";
 import { body, validationResult } from "express-validator";
+import { Request, Response, NextFunction } from "express";
 
-const handleValidationErrors = async(
-  req: Request, 
-  res: Response, 
+const handleValidationErrors = async (
+  req: Request,
+  res: Response,
   next: NextFunction
 ) => {
   const errors = validationResult(req);
-  if(!errors.isEmpty()){
-      return res.status(400).json({errors: errors.array()});
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
   next();
 };
@@ -28,7 +28,7 @@ export const validateMyUserRequest = [
 
 export const validateMyRestaurantRequest = [
     body("restaurantName").notEmpty().withMessage("Restaurant name is required"),
-    body("address").notEmpty().withMessage("Address is required"),
+    body("address").notEmpty().withMessage("City is required"),
     body("phone").isString().notEmpty().withMessage("Phone number is required"),
     body("deliveryPrice")
       .isFloat({ min: 0 })
