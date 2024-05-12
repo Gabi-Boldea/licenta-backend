@@ -10,8 +10,6 @@ const orderSchema = new mongoose.Schema({
         addressLine1: {type: String, required: true},
         addressLine2: {type: String, required: true},
         city: {type: String, required: true},
-        county: {type: String, required: true},
-        postalCode: {type: String, required: true},
     },
     cartItems: [
         {
@@ -23,7 +21,7 @@ const orderSchema = new mongoose.Schema({
     totalAmount: Number,
     status: {
         type: String,
-        enum: ["placed", "paid", "inProgess", "outForDelivery", "delivered"],
+        enum: ["placed", "paid", "inProgress", "outForDelivery", "delivered"],
     },
     createdAt: {type: Date, default: Date.now},
 });
